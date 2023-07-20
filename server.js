@@ -6,8 +6,8 @@ import authRoute from "./routes/authRoute.js";
 import cors from "cors";
 import categoryRoute from "./routes/categoryRoute.js";
 import productRoute from "./routes/productRoute.js";
-import path from "path";
-import { fileURLToPath } from "url";
+//import path from "path";
+//import { fileURLToPath } from "url";
 
 const app = express();
 
@@ -16,8 +16,8 @@ dotenv.config();
 connectDB();
 
 //ESModule fix
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = path.dirname(__filename);
 
 //For forgot password UI
 app.set("view engine", "ejs");
@@ -29,21 +29,21 @@ app.use(morgan("dev"));
 app.use(cors({
   origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com/"],
 }));
-app.use(express.static(path.join(__dirname, "./client/build")));
+//app.use(express.static(path.join(__dirname, "./client/build")));
 //Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/products", productRoute);
 //REST API
-/*
+
 app.get("/", (req, res) => {
   res.send("<h1>Welcome</h1>");
 });
-*/
+/*
 app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
+*/
 //PORT
 const PORT = process.env.PORT || 8080;
 
