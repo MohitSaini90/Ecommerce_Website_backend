@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email verification</title>
+    <style>
+        .tick-container {
+            text-align: center;
+        }
+    
+        .tick {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: #28a745;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+    
+        .tick::before {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 80px;
+            border-color: white;
+            border-width: 0 8px 8px 0;
+            border-style: solid;
+            transform: rotate(45deg);
+            margin: 20px auto;
+        }
+    
+        .verified-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+         .cross-container {
+      text-align: center;
+    }
+    
+    .cross {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: #dc3545;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    
+    .cross::before,
+    .cross::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 60px;
+      height: 10px;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+    
+    .cross::before {
+      top: 45px;
+      left: 20px;
+    }
+    
+    .cross::after {
+      top: 45px;
+      right: 20px;
+    }
+    
+    .not-verified-text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    </style>
+    
+</head>
+
+<body>
+    <h1>
+        <%=email%>
+    </h1>
+    <div class="tick-container">
+        <div id="VerifiedORNot" class="cross"></div>
+        <div class="verified-text">Email not Verified</div>
+        <div id="myDiv"></div>
+    </div>
+    <script>
+        var status = '<%- JSON.stringify(status) %>';
+        var frontendURL = '<%- frontendURL %>'
+        if (JSON.parse(status) == "verified") {
+            const elem = document.getElementById("VerifiedORNot");
+            elem.classList.remove("cross");
+            elem.classList.add("tick");
+            var element = document.querySelector(".verified-text");
+            element.textContent = "Email Verified";
+
+             var parentElement = document.getElementById("myDiv");
+
+            // Create a new anchor tag
+            var anchorTag = document.createElement("a");
+
+            // Set the href attribute with the desired link
+            anchorTag.href = `${frontendURL}/login`;
+
+            // Set the anchor tag text
+            anchorTag.textContent = "Redirect to Login page";
+
+            // Append the anchor tag to the parent element
+            parentElement.appendChild(anchorTag);
+
+        }
+    </script>
+</body>
+
+</html>
