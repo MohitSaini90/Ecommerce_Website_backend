@@ -30,7 +30,7 @@ app.use(morgan("dev"));
 //  origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com/"],
 //}));
 app.use(cors());
-app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../build")));
 //Routes
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoute);
@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 });
 */
 app.use("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 
 //PORT
