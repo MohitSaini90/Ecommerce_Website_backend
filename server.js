@@ -26,9 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 //middlewares
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors({
-  origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com/"],
-}));
+//app.use(cors({
+//  origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com/"],
+//}));
+app.use(cors());
 //app.use(express.static(path.join(__dirname, "./client/build")));
 //Routes
 app.use("/api/v1/auth", authRoute);
