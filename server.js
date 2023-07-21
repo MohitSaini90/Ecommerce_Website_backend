@@ -41,10 +41,11 @@ app.get("/", (req, res) => {
   res.send("<h1>Welcome</h1>");
 });
 */
+/*
 app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
-
+*/
 //PORT
 const PORT = process.env.PORT || 8080;
 
