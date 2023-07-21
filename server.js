@@ -11,7 +11,7 @@ import { fileURLToPath } from "url";
 
 const app = express();
 
-//configure
+//configure 
 dotenv.config();
 connectDB();
 
