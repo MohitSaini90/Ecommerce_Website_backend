@@ -192,7 +192,7 @@ export const forgotPasswordController = async (req, res) => {
     const token = JWT.sign({ email: user.email, id: user._id }, secret, {
       expiresIn: "5m",
     });
-    const link = `${process.env.REACT_APP_API}/api/v1/auth/reset-password/${user._id}/${token}`;
+    const link = `${process.env.REACT_APP_API}api/v1/auth/reset-password/${user._id}/${token}`;
     /*Node Mailer */
     var transporter = nodemailer.createTransport({
       service: "gmail",
