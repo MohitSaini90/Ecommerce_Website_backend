@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com", "https://ekart-site.onrender.com/"],
+  origin: ["http://localhost:3000", "https://ecommerce-app-wstj.onrender.com", "https://ekart-site.onrender.com"],
 }));
 //app.use(cors());
 app.use(express.static(path.join(__dirname, "../build")));
