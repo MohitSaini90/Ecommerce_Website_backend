@@ -36,22 +36,22 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/products", productRoute);
 //REST API
-/*
+
 app.get("/", (req, res) => {
   res.send("<h1>Welcome</h1>");
 });
-*/
+
 /*
 app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname, "build/index.html"));
 });
 */
 
-
+/*
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
-
+*/
 
 
 //PORT
