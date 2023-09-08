@@ -235,7 +235,7 @@ export const productCountController = async (req, res) => {
 
 export const productListController = async (req, res) => {
   try {
-    const perPage = 2;
+    const perPage = 10;
     const page = req.params.page ? req.params.page : 1;
     const products = await productModel
       .find({})
@@ -310,7 +310,7 @@ export const searchSimilarProductController = async (req, res) => {
 export const productCategoryController = async (req, res) => {
   try {
     const category = await categoryModel.findOne({ slug: req.params.slug });
-    const products = await productModel.find({ category }).populate("category");
+    const products = await productModel.find({ category }).select("-photo").populate("category");
     res.status(200).send({
       success: true,
       message: "Success getting category products!!",
