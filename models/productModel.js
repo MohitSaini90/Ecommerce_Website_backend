@@ -37,5 +37,6 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
+// Create an index on the `createdAt` field(for loadmore functionality)
+productSchema.index({ createdAt: -1 });
 export default mongoose.model("products", productSchema);
