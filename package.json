@@ -31,6 +31,7 @@
     "nodemailer": "^6.9.3",
     "nodemon": "^1.14.9",
     "semver": "^7.5.3",
+    "sharp": "^0.32.5",
     "slugify": "^1.6.6",
     "twilio": "^4.14.0"
   },
