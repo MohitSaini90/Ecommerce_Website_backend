@@ -7,6 +7,7 @@ import twilio from "twilio";
 import dotenv from "dotenv";
 import userModel from "../models/userModel.js";
 import nodemailer from "nodemailer";
+import sharp from "sharp";
 //configure
 dotenv.config();
 
