@@ -39,13 +39,21 @@ export const createProductController = async (req, res) => {
           .status(500)
           .send({ message: "Photo is required and should be less than 1mb!!" });
     }
-
+const resizedImageBuffer = await sharp(photo.path)
+      .resize({
+        width: 800,
+        height: 600,
+        fit: sharp.fit.inside, // Maintain aspect ratio, fit inside the dimensions
+        withoutEnlargement: true, // Do not enlarge images smaller than specified dimensions
+      }) // Set your desired dimensions here
+      .toBuffer();
     //saving product
-    const product = new productModel({ ...req.fields, slug: slugify(name) });
-    if (photo) {
-      product.photo.data = fs.readFileSync(photo.path);
-      product.photo.contentType = photo.type;
-    }
+    const product = new productModel({ ...req.fields, slug: slugify(name),photo: {
+        data: resizedImageBuffer,
+        contentType: photo.type,
+      }, 
+    });
+
     await product.save();
     res.status(200).send({
       success: true,
